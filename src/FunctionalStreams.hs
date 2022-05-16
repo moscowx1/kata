@@ -98,7 +98,8 @@ instance Functor Stream where
 instance Applicative Stream where
   -- pure :: a -> Stream a
   pure = repeatS
-  (f :> fs) <*> (x :> xs) = f x :> (fs <*> xs)
+  (<*>) = zipWithS ($)
+--(f :> fs) <*> (x :> xs) = f x :> (fs <*> xs)
 
 s :: Stream Integer
 s = repeatS 1
